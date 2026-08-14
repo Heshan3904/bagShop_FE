@@ -42,7 +42,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>©2026 All rights reserved | Design by OneZeroX</p>
+        <p><i> Developed by</i> <b>OneZeroX | Smart Slutions</b> ©2026 ProPacks. All rights reserved.</p>
       </div>
     </footer>
   )
