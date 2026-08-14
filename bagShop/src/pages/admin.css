@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Admin — Dashboard Landing
+   Palette: #23989A (teal, primary) · #656564 (slate, secondary)
+   ========================================================================== */
+
+:root {
+  --teal: #23989a;
+  --teal-dark: #1c7a7c;
+  --teal-light: #e6f5f5;
+  --slate: #656564;
+  --slate-light: #9a9a99;
+  --ink: #2b2b2b;
+  --paper: #ffffff;
+  --canvas: #f4f6f6;
+  --border: #e6e9e9;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 7px;
+  --shadow-card: 0 1px 2px rgba(43, 43, 43, 0.04), 0 14px 34px -18px rgba(35, 152, 154, 0.22);
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Page shell                                                              */
+/* ---------------------------------------------------------------------- */
+
+main {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 20px 32px 80px !important;
+  background:
+    radial-gradient(1100px 460px at 12% -10%, rgba(35, 152, 154, 0.10), transparent 60%),
+    var(--canvas);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+main *,
+main *::before,
+main *::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Welcome header                                                          */
+/* ---------------------------------------------------------------------- */
+
+main > h1 {
+  text-align: left !important;
+  padding-top: 28px !important;
+  margin: 0 0 4px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+main > h1::before {
+  content: "Dashboard";
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+main > h1::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 4px;
+  margin-top: 14px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), #4fc3c5);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Primary action — Manage Products                                       */
+/* ---------------------------------------------------------------------- */
+
+main > a {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 36px;
+}
+
+.adpro {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 13px 22px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px -8px rgba(35, 152, 154, 0.55);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.adpro::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 7h-9m-3 0H4m16 5H4m16 5H4m8-10v10'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 7h-9m-3 0H4m16 5H4m16 5H4m8-10v10'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.adpro:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 24px -8px rgba(35, 152, 154, 0.65);
+}
+
+.adpro:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0 4px 12px -6px rgba(35, 152, 154, 0.5);
+}
+
+.adpro:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(35, 152, 154, 0.28);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Dashboard content area                                                  */
+/* ---------------------------------------------------------------------- */
+
+main > *:last-child:not(h1):not(a) {
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive                                                              */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  main {
+    padding: 16px 18px 60px !important;
+  }
+
+  main > h1 {
+    font-size: 24px;
+    padding-top: 20px !important;
+  }
+
+  .adpro {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Reduced motion ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .adpro {
+    transition: none !important;
+  }
+}

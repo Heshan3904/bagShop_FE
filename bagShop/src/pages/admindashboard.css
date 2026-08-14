@@ -1,0 +1,379 @@
+/* ==========================================================================
+   Admin Dashboard — Stats Overview
+   Palette: #23989A (teal, primary) · #656564 (slate, secondary)
+   ========================================================================== */
+
+:root {
+  --teal: #23989a;
+  --teal-dark: #1c7a7c;
+  --teal-light: #e6f5f5;
+  --slate: #656564;
+  --slate-light: #9a9a99;
+  --ink: #2b2b2b;
+  --paper: #ffffff;
+  --canvas: #f4f6f6;
+  --border: #e6e9e9;
+
+  --amber: #b4780f;
+  --amber-bg: #fdf3e2;
+  --green: #2f8f5b;
+  --green-bg: #e7f5ee;
+  --red: #c14444;
+  --red-bg: #fbeaea;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 7px;
+  --shadow-card: 0 1px 2px rgba(43, 43, 43, 0.04), 0 14px 34px -18px rgba(35, 152, 154, 0.2);
+  --shadow-card-hover: 0 1px 2px rgba(43, 43, 43, 0.05), 0 20px 40px -18px rgba(35, 152, 154, 0.3);
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Page shell                                                              */
+/* ---------------------------------------------------------------------- */
+
+.dashboard-container {
+  font-family: var(--font-body);
+  color: var(--ink);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard-container *,
+.dashboard-container *::before,
+.dashboard-container *::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.dashboard-container > h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.dashboard-container > h1::before {
+  content: "Overview";
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.dashboard-container > h1::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 4px;
+  margin-top: 14px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), #4fc3c5);
+}
+
+/* Loading state ------------------------------------------------------------ */
+
+h2:only-child {
+  background: var(--paper);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+  color: var(--slate);
+  font-weight: 500;
+  max-width: 400px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Stat cards grid                                                         */
+/* ---------------------------------------------------------------------- */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+  margin-bottom: 100px;
+}
+
+.card {
+  position: relative;
+  left: 0;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 20px 22px;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), #4fc3c5);
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+
+.card p {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--slate);
+  text-transform: uppercase;
+}
+
+/* Color-code specific stat cards by position for quick scanning ----------- */
+
+.stats-grid .card:nth-child(4) h2 {
+  color: var(--teal-dark);
+}
+
+.stats-grid .card:nth-child(4)::before {
+  background: linear-gradient(90deg, var(--teal), var(--teal-dark));
+}
+
+.stats-grid .card:nth-child(5) h2 {
+  color: var(--amber);
+}
+
+.stats-grid .card:nth-child(5)::before {
+  background: linear-gradient(90deg, #e0a53a, var(--amber));
+}
+
+.stats-grid .card:nth-child(6) h2 {
+  color: var(--green);
+}
+
+.stats-grid .card:nth-child(6)::before {
+  background: linear-gradient(90deg, #4bb37e, var(--green));
+}
+
+/* ---------------------------------------------------------------------- */
+/* Dashboard sections (Low stock / Recent orders)                          */
+/* ---------------------------------------------------------------------- */
+
+.dashboard-section {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 22px 24px 10px;
+  margin-bottom: 24px;
+}
+
+.dashboard-section > h2 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dashboard-section > p {
+  margin: 0 0 16px;
+  padding: 20px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--slate-light);
+  background: var(--canvas);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border);
+}
+
+/* List items ---------------------------------------------------------- */
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  transition: background 0.12s ease;
+}
+
+.dashboard-section .list-item:last-of-type {
+  border-bottom: none;
+}
+
+.list-item:hover {
+  background: rgba(35, 152, 154, 0.035);
+  margin: 0 -8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.list-item span:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Low Stock list: highlight the count -------------------------------------- */
+
+.dashboard-section:nth-of-type(2) .list-item strong {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--red);
+  background: var(--red-bg);
+  padding: 5px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Recent Orders list: customer / total / status ---------------------------- */
+
+.dashboard-section:nth-of-type(3) .list-item {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-section:nth-of-type(3) .list-item span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-section:nth-of-type(3) .list-item span:nth-child(2) {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--teal-dark);
+}
+
+.dashboard-section:nth-of-type(3) .list-item span:nth-child(3) {
+  justify-self: start;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 999px;
+  width: fit-content;
+  white-space: nowrap;
+  color: var(--slate);
+  background: var(--canvas);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive                                                              */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card h2 {
+    font-size: 22px;
+  }
+
+  .dashboard-section {
+    padding: 18px 16px 8px;
+    margin-bottom: 18px;
+  }
+
+  .dashboard-section:nth-of-type(3) .list-item {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name status"
+      "total status";
+    row-gap: 2px;
+  }
+
+  .dashboard-section:nth-of-type(3) .list-item span:first-child {
+    grid-area: name;
+    white-space: normal;
+  }
+
+  .dashboard-section:nth-of-type(3) .list-item span:nth-child(2) {
+    grid-area: total;
+    font-size: 13px;
+  }
+
+  .dashboard-section:nth-of-type(3) .list-item span:nth-child(3) {
+    grid-area: status;
+    justify-self: end;
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
+
+  .card p {
+    font-size: 11.5px;
+  }
+
+  .list-item {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reduced motion ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .list-item {
+    transition: none !important;
+  }
+}

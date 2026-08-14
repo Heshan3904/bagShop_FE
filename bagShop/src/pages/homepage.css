@@ -1,0 +1,118 @@
+.contact{
+    display: flex;
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    flex-direction: row;
+    gap: 10px;
+}
+.contact img{
+    height: 60px;
+    width: auto;
+}
+.hmain{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 0 40px 40px;
+}
+.addPro{
+    height: fit-content;
+    width: 800px;
+    display: flex;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.content{
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+
+.catego{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+.ccontent{
+    display: flex;
+    min-height: 210px;
+    padding: 24px 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid #d8eeee;
+    border-radius: 16px;
+    background: #f7fcfc;
+    color: #173435;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.ccontent:hover { transform: translateY(-4px); border-color: #23989A; box-shadow: 0 12px 24px rgba(20, 84, 86, .12); }
+.ccontent img{
+    height: 150px;
+    width: min(100%, 150px);
+    object-fit: contain;
+}
+
+/* Tablet devices */
+@media (max-width: 768px) {
+    .contact {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .contact img {
+        height: 50px;
+    }
+    
+    .category h1 {
+        font-size: 4rem;
+    }
+    
+    .ccard {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .c1 {
+        padding: 2rem 1rem;
+        height: auto;
+        width: 100%;
+    }
+    
+    .c1 img {
+        height: 15rem;
+    }
+    .addPro{
+    width: 300px;
+}
+
+}
+
+/* Phones: two columns across two rows */
+@media (max-width: 768px) {
+    .contact {
+        bottom: 0.5rem;
+        right: 0.5rem;
+    }
+    
+    .contact img {
+        height: 40px;
+    }
+    
+    .category-section { width: calc(100% - 32px); margin-top: 52px; }
+    .catego { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .ccontent { min-height: 160px; padding: 16px 10px; font-size: 1rem; }
+    .ccontent img { height: 105px; width: min(100%, 110px); }
+.addPro{
+    width: 300px;
+}
+
+}

@@ -1,0 +1,311 @@
+/* ==========================================================================
+   Edit Product — Admin Form
+   Palette: #23989A (teal, primary) · #656564 (slate, secondary)
+   ========================================================================== */
+
+:root {
+  --teal: #23989a;
+  --teal-dark: #1c7a7c;
+  --teal-light: #e6f5f5;
+  --slate: #656564;
+  --slate-light: #9a9a99;
+  --ink: #2b2b2b;
+  --paper: #ffffff;
+  --canvas: #f4f6f6;
+  --border: #e1e4e4;
+  --danger: #d64545;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 7px;
+  --shadow-card: 0 1px 2px rgba(43, 43, 43, 0.04), 0 12px 32px -16px rgba(35, 152, 154, 0.18);
+  --shadow-focus: 0 0 0 4px rgba(35, 152, 154, 0.14);
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Page shell                                                              */
+/* ---------------------------------------------------------------------- */
+
+.admin-container {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 56px 24px 80px;
+  background:
+    radial-gradient(1100px 480px at 14% -10%, rgba(35, 152, 154, 0.10), transparent 60%),
+    var(--canvas);
+  font-family: var(--font-body);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-container * {
+  box-sizing: border-box;
+}
+
+.admin-container h2 {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 0 6px;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.admin-container h2::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), #4fc3c5);
+}
+
+.admin-container h2::before {
+  content: "Product details";
+  display: block;
+  order: -1;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* Loading state ----------------------------------------------------------- */
+
+.admin-container > h2[style] {
+  background: var(--paper);
+  border-radius: var(--radius-md);
+  padding: 48px;
+  box-shadow: var(--shadow-card);
+  color: var(--slate);
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Form card                                                               */
+/* ---------------------------------------------------------------------- */
+
+.admin-form {
+  width: 100%;
+  max-width: 620px;
+  margin-top: 28px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 36px 40px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--teal) 0%, #4fc3c5 50%, var(--teal) 100%);
+}
+
+/* Field base --------------------------------------------------------------- */
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: var(--ink);
+  background: var(--canvas);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.admin-form input::placeholder,
+.admin-form textarea::placeholder {
+  color: var(--slate-light);
+}
+
+.admin-form input:hover,
+.admin-form textarea:hover,
+.admin-form select:hover {
+  border-color: #c7cfcf;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  outline: none;
+  background: var(--paper);
+  border-color: var(--teal);
+  box-shadow: var(--shadow-focus);
+}
+
+.admin-form input:invalid:not(:placeholder-shown) {
+  border-color: var(--danger);
+}
+
+/* Field placement — name spans full width, textarea spans full width ------ */
+
+.admin-form input[name="name"] {
+  grid-column: 1 / -1;
+}
+
+.admin-form textarea {
+  grid-column: 1 / -1;
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.admin-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23656564'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.146l3.71-3.916a.75.75 0 111.08 1.04l-4.24 4.47a.75.75 0 01-1.08 0l-4.24-4.47a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+/* Number inputs: hide spinners for a cleaner look -------------------------- */
+
+.admin-form input[type="number"]::-webkit-outer-spin-button,
+.admin-form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.admin-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Image preview + file input                                              */
+/* ---------------------------------------------------------------------- */
+
+.admin-form img[alt="Preview"] {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: 150px !important;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius-md) !important;
+  border: 3px solid var(--paper);
+  outline: 1.5px solid var(--border);
+  box-shadow: 0 6px 18px -8px rgba(43, 43, 43, 0.25);
+  margin-top: 4px;
+}
+
+.admin-form input[type="file"] {
+  grid-column: 1 / -1;
+  background: var(--teal-light);
+  border: 1.5px dashed #a9d9d9;
+  color: var(--teal-dark);
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 14px;
+  cursor: pointer;
+}
+
+.admin-form input[type="file"]:hover {
+  background: #dcf0f0;
+  border-color: var(--teal);
+}
+
+.admin-form input[type="file"]::file-selector-button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--paper);
+  background: var(--teal);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.admin-form input[type="file"]::file-selector-button:hover {
+  background: var(--teal-dark);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Submit button                                                           */
+/* ---------------------------------------------------------------------- */
+
+.admin-form button[type="submit"] {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  padding: 14px 20px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 8px 20px -8px rgba(35, 152, 154, 0.55);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.admin-form button[type="submit"]:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 24px -8px rgba(35, 152, 154, 0.65);
+}
+
+.admin-form button[type="submit"]:active {
+  transform: translateY(1px) scale(0.995);
+  box-shadow: 0 4px 12px -6px rgba(35, 152, 154, 0.5);
+}
+
+.admin-form button[type="submit"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(35, 152, 154, 0.28);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive                                                              */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+  .admin-container {
+    padding: 36px 16px 60px;
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr;
+    padding: 26px 22px 30px;
+  }
+
+  .admin-form input[name="name"],
+  .admin-form textarea,
+  .admin-form select,
+  .admin-form input[type="file"],
+  .admin-form img[alt="Preview"] {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Reduced motion ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-form *,
+  .admin-form button {
+    transition: none !important;
+  }
+}

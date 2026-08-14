@@ -1,0 +1,111 @@
+.order-details-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px;
+}
+
+.order-summary,
+.shipping-box,
+.items-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.order-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.status.pending {
+  background: orange;
+}
+
+.status.processing {
+  background: dodgerblue;
+}
+
+.status.shipped {
+  background: purple;
+}
+
+.status.delivered {
+  background: green;
+}
+
+.status.cancelled {
+  background: crimson;
+}
+
+.payment-receipt-box {
+  margin-top: 25px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.payment-receipt-box h2 {
+  margin-bottom: 8px;
+}
+
+.receipt-description {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.receipt-image-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.bank-receipt-image {
+  width: 100%;
+  max-height: 650px;
+  object-fit: contain;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: block;
+  background: #f8f8f8;
+}
+
+.view-receipt-button {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #222;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.view-receipt-button:hover {
+  background: #444;
+}

@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Sign In — Auth
+   Palette: #23989A (teal, primary) · #656564 (slate, secondary)
+   ========================================================================== */
+
+:root {
+  --teal: #23989a;
+  --teal-dark: #1c7a7c;
+  --teal-light: #e6f5f5;
+  --slate: #656564;
+  --slate-light: #9a9a99;
+  --ink: #2b2b2b;
+  --paper: #ffffff;
+  --canvas: #f4f6f6;
+  --border: #e6e9e9;
+  --red: #c14444;
+  --red-bg: #fbeaea;
+
+  --radius-lg: 20px;
+  --radius-sm: 10px;
+  --shadow-card: 0 1px 2px rgba(43, 43, 43, 0.04), 0 24px 60px -24px rgba(35, 152, 154, 0.28);
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Page shell                                                              */
+/* ---------------------------------------------------------------------- */
+
+.auth-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1100px 480px at 14% -10%, rgba(35, 152, 154, 0.12), transparent 60%),
+    radial-gradient(900px 420px at 100% 110%, rgba(35, 152, 154, 0.08), transparent 60%),
+    var(--canvas);
+}
+
+.auth-page *,
+.auth-page *::before,
+.auth-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Card                                                                    */
+/* ---------------------------------------------------------------------- */
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--teal) 0%, #4fc3c5 50%, var(--teal) 100%);
+}
+
+.auth-card h2 {
+  margin: 0 0 6px;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-align: center;
+}
+
+.auth-subtitle {
+  margin: 0 0 28px;
+  font-size: 14px;
+  color: var(--slate);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Form                                                                    */
+/* ---------------------------------------------------------------------- */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.auth-label:not(:first-child) {
+  margin-top: 16px;
+}
+
+.auth-form input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: var(--ink);
+  background: var(--canvas);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.auth-form input::placeholder {
+  color: var(--slate-light);
+}
+
+.auth-form input:hover {
+  border-color: #c7cfcf;
+}
+
+.auth-form input:focus {
+  outline: none;
+  background: var(--paper);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(35, 152, 154, 0.14);
+}
+
+/* Error message ---------------------------------------------------- */
+
+.auth-error {
+  margin: 16px 0 0;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--red-bg);
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Submit button --------------------------------------------------- */
+
+.auth-form button[type="submit"] {
+  margin-top: 26px;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(35, 152, 154, 0.55);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
+}
+
+.auth-form button[type="submit"]:hover:not(:disabled) {
+  filter: brightness(1.05);
+  box-shadow: 0 12px 28px -10px rgba(35, 152, 154, 0.65);
+}
+
+.auth-form button[type="submit"]:active:not(:disabled) {
+  transform: translateY(1px) scale(0.995);
+}
+
+.auth-form button[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.auth-form button[type="submit"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(35, 152, 154, 0.28);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Switch link                                                             */
+/* ---------------------------------------------------------------------- */
+
+.auth-switch {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--slate);
+}
+
+.auth-switch a {
+  color: var(--teal-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive                                                              */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 460px) {
+  .auth-page {
+    padding: 24px 16px;
+  }
+
+  .auth-card {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+
+  .auth-card h2 {
+    font-size: 22px;
+  }
+}
+
+/* Reduced motion ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-form input,
+  .auth-form button {
+    transition: none !important;
+  }
+}

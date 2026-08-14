@@ -1,0 +1,133 @@
+.form-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  z-index: 10000;
+}
+
+.form-container {
+  width: 720px;
+  max-width: calc(100% - 40px);
+  background: linear-gradient(135deg, rgba(255,140,0,0.12), rgba(255,165,0,0.08));
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255,165,0,0.18);
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+}
+
+.form-title {
+  margin: 0 0 12px 0;
+  color: #ff6600;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 600;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.7);
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.product-form {
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.image-link-input {
+  background: rgba(255,255,255,0.85);
+}
+
+.add-category {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.add-category input { flex: 1 }
+
+.add-category-btn {
+  background: #ff7a00;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background: #ff6a00;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    width: 95%;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .add-category {
+    flex-direction: column;
+  }
+
+  .add-category-btn {
+    width: 100%;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  cursor: pointer;
+}
+
+.form-container { position: relative }
